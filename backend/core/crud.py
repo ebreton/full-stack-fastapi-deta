@@ -25,10 +25,11 @@ class CRUDBase(Generic[InDbSchemaType, CreateSchemaType, UpdateSchemaType]):
         return self.schema(**db.get(key))
 
     def get_many(
-        self, db: Base, *, query: Union[List[Dict[str, Any]], Dict[str, Any]], limit: int = 2000, buffer: int = 100,
+        self, db: Base, *, query: Union[List[Dict[str, Any]], Dict[str, Any]], buffer: int = 10, pages: int = 100,
     ) -> List[InDbSchemaType]:
+        """ Default pagination will return a maximum of 100 pages, with 10 elements each"""
         # TODO: implement pagination
-        return [self.schema(**result) for result in next(db.fetch(query=query, buffer=buffer))]
+        return [self.schema(**result) for result in next(db.fetch(query=query, buffer=buffer, pages=pages))]
 
     def create(
         self, db: Base, *, key: str, obj_in: CreateSchemaType,

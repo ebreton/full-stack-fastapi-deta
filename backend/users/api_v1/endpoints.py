@@ -16,13 +16,13 @@ router = APIRouter()
 @router.get("/", response_model=List[schemas.User])
 def read_users(
     db: Base = Depends(deps.get_db),
-    limit: int = 2000,
-    buffer: int = 100,
+    buffer: int = 10,
+    pages: int = 100
 ) -> List[schemas.User]:
     """
     Retrieve users.
     """
-    users = crud.user.get_many(db, query={}, limit=limit, buffer=buffer)
+    users = crud.user.get_many(db, query={}, pages=pages, buffer=buffer)
     return [schemas.User(**user.dict()) for user in users]
 
 
