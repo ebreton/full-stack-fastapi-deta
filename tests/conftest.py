@@ -1,8 +1,8 @@
 from typing import Dict, Generator
 
 import pytest
-from fastapi.testclient import TestClient
 from deta import Base, Deta
+from fastapi.testclient import TestClient
 
 from backend.core.config import settings
 from backend.main import app

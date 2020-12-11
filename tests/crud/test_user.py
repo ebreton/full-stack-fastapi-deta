@@ -1,9 +1,9 @@
-from fastapi.encoders import jsonable_encoder
 from deta import Base
+from fastapi.encoders import jsonable_encoder
 
-from backend.users import crud
 from backend.core.security import verify_password
 from backend.schemas.user import UserCreate, UserUpdate
+from backend.users import crud
 from tests.utils.utils import random_email, random_lower_string
 
 

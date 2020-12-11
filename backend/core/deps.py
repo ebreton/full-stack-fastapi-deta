@@ -1,7 +1,6 @@
-from deta import Deta, Base
+from deta import Base, Deta
 
 from core.config import settings
-
 
 RESUSABLE_DB = None
 

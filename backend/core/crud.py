@@ -1,7 +1,7 @@
 from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union
 
-from pydantic import BaseModel
 from deta import Base
+from pydantic import BaseModel
 
 InDbSchemaType = TypeVar("InDbSchemaType", bound=BaseModel)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
@@ -19,21 +19,25 @@ class CRUDBase(Generic[InDbSchemaType, CreateSchemaType, UpdateSchemaType]):
         """
         self.schema = schema
 
-    def get(
-        self, db: Base, key: str,
-    ) -> Optional[InDbSchemaType]:
+    def get(self, db: Base, key: str,) -> Optional[InDbSchemaType]:
         return self.schema(**db.get(key))
 
     def get_many(
-        self, db: Base, *, query: Union[List[Dict[str, Any]], Dict[str, Any]], buffer: int = 10, pages: int = 100,
+        self,
+        db: Base,
+        *,
+        query: Union[List[Dict[str, Any]], Dict[str, Any]],
+        buffer: int = 10,
+        pages: int = 100,
     ) -> List[InDbSchemaType]:
         """ Default pagination will return a maximum of 100 pages, with 10 elements each"""
         # TODO: implement pagination
-        return [self.schema(**result) for result in next(db.fetch(query=query, buffer=buffer, pages=pages))]
+        return [
+            self.schema(**result)
+            for result in next(db.fetch(query=query, buffer=buffer, pages=pages))
+        ]
 
-    def create(
-        self, db: Base, *, key: str, obj_in: CreateSchemaType,
-    ) -> InDbSchemaType:
+    def create(self, db: Base, *, key: str, obj_in: CreateSchemaType,) -> InDbSchemaType:
         return self.schema(**db.put(obj_in.dict(), key=key))
 
     def safe_create(
@@ -44,7 +48,10 @@ class CRUDBase(Generic[InDbSchemaType, CreateSchemaType, UpdateSchemaType]):
     def create_many(
         self, db: Base, *, objs_in=List[CreateSchemaType],
     ) -> List[InDbSchemaType]:
-        return [self.schema(**result) for result in db.put_many([obj_in.dict() for obj_in in objs_in])]
+        return [
+            self.schema(**result)
+            for result in db.put_many([obj_in.dict() for obj_in in objs_in])
+        ]
 
     def update(
         self, db: Base, key: str, *, obj_in: Union[UpdateSchemaType, Dict[str, Any]],
@@ -53,7 +60,5 @@ class CRUDBase(Generic[InDbSchemaType, CreateSchemaType, UpdateSchemaType]):
             obj_in = obj_in.dict()
         db.update(obj_in, key=key)
 
-    def delete(
-        self, db: Base, *, key: str,
-    ) -> None:
+    def delete(self, db: Base, *, key: str,) -> None:
         db.delete(key)

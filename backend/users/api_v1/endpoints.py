@@ -1,23 +1,21 @@
 from typing import List
-from deta import Base
 
+from deta import Base
 from fastapi import APIRouter, Body, Depends, HTTPException
 from pydantic.networks import EmailStr
 
 import schemas
 from core import deps
 from core.config import settings
-from utils import send_new_account_email
 from users import crud
+from utils import send_new_account_email
 
 router = APIRouter()
 
 
 @router.get("/", response_model=List[schemas.User])
 def read_users(
-    db: Base = Depends(deps.get_db),
-    buffer: int = 10,
-    pages: int = 100
+    db: Base = Depends(deps.get_db), buffer: int = 10, pages: int = 100
 ) -> List[schemas.User]:
     """
     Retrieve users.
@@ -28,9 +26,7 @@ def read_users(
 
 @router.post("/", response_model=schemas.User)
 def create_user(
-    *,
-    db: Base = Depends(deps.get_db),
-    user_in: schemas.UserCreate,
+    *, db: Base = Depends(deps.get_db), user_in: schemas.UserCreate,
 ) -> schemas.User:
     """
     Create new user.
@@ -62,8 +58,7 @@ def create_user_open(
     """
     if not settings.USERS_OPEN_REGISTRATION:
         raise HTTPException(
-            status_code=403,
-            detail="Open user registration is forbidden on this server",
+            status_code=403, detail="Open user registration is forbidden on this server",
         )
     user = crud.user.get_by_email(db, email=email)
     if user is not None:
@@ -77,10 +72,7 @@ def create_user_open(
 
 
 @router.get("/{user_key}", response_model=schemas.User)
-def read_user_by_id(
-    user_key: str,
-    db: Base = Depends(deps.get_db),
-) -> schemas.User:
+def read_user_by_id(user_key: str, db: Base = Depends(deps.get_db),) -> schemas.User:
     """
     Get a specific user by key.
     """
@@ -90,10 +82,7 @@ def read_user_by_id(
 
 @router.put("/{user_key}", response_model=schemas.User)
 def update_user(
-    *,
-    db: Base = Depends(deps.get_db),
-    user_key: str,
-    user_in: schemas.UserUpdate,
+    *, db: Base = Depends(deps.get_db), user_key: str, user_in: schemas.UserUpdate,
 ) -> schemas.User:
     """
     Update a user.

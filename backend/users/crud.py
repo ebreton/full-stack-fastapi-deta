@@ -2,9 +2,9 @@ from typing import Any, Dict, Optional, Union
 
 from deta import Base
 
-from core.security import get_password_hash, verify_password
 from core.crud import CRUDBase
-from schemas.user import UserCreate, UserUpdate, UserInDB, User
+from core.security import get_password_hash, verify_password
+from schemas.user import User, UserCreate, UserInDB, UserUpdate
 
 
 class CRUDUser(CRUDBase[UserInDB, UserCreate, UserUpdate]):

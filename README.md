@@ -11,6 +11,10 @@ The inventory of all branches is available on the master branche, more specifica
     export PYTHONPATH=~/git-repos/full-stack-fastapi-deta/backend
     pytest -x --pdb tests
 
+## Linting
+
+    bash lint.sh backend tests
+
 ## Technical mindset
 
 - focus on getting fastAPI deployed on a Micro and a BaseBD

@@ -1,11 +1,9 @@
-from typing import Dict
-
-from fastapi.testclient import TestClient
 from deta import Base
+from fastapi.testclient import TestClient
 
-from backend.users import crud
 from backend.core.config import settings
 from backend.schemas.user import UserCreate
+from backend.users import crud
 from tests.utils.utils import random_email, random_lower_string
 
 
