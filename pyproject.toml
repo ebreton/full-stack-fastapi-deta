@@ -11,6 +11,7 @@ passlib = {extras = ["bcrypt"], version = "^1.7.2"}
 emails = "^0.5.15"
 pydantic = {extras = ["email", "dotenv"], version = "^1.7.3"}
 Jinja2 = "^2.11.2"
+deta = "^0.7"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.770"

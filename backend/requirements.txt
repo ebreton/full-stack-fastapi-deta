@@ -5,6 +5,7 @@ cffi==1.14.4; python_version >= "3.6"
 chardet==3.0.4; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 cssselect==1.1.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 cssutils==1.0.2
+deta==0.7
 dnspython==2.0.0; python_version >= "3.6"
 email-validator==1.1.2; python_version >= "3.6"
 emails==0.5.15

@@ -154,6 +154,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "deta"
+version = "0.7"
+description = "Deta lib for Python 3"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "dnspython"
 version = "2.0.0"
 description = "DNS toolkit"
@@ -643,7 +651,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "d54baa2f6aba1cd41f910700073784a986ed9658d4525870b16589683458eff3"
+content-hash = "a35d376106a1dec5fc7e0298b00623452e90890aa9106b085eacfae3303f6cc6"
 
 [metadata.files]
 appdirs = [
@@ -775,6 +783,10 @@ cssselect = [
 cssutils = [
     {file = "cssutils-1.0.2-py3-none-any.whl", hash = "sha256:c74dbe19c92f5052774eadb15136263548dd013250f1ed1027988e7fef125c8d"},
     {file = "cssutils-1.0.2.tar.gz", hash = "sha256:a2fcf06467553038e98fea9cfe36af2bf14063eb147a70958cfcaa8f5786acaf"},
+]
+deta = [
+    {file = "deta-0.7-py3-none-any.whl", hash = "sha256:1e802aa3808bad9e38c8b9e38e8a91979869a5a1e80d109d2db95adb25d412dd"},
+    {file = "deta-0.7.tar.gz", hash = "sha256:1f5d694f470c019b99525fa7a88706b6c24c65c969cc1ba535bd8d6d80ccdca9"},
 ]
 dnspython = [
     {file = "dnspython-2.0.0-py3-none-any.whl", hash = "sha256:40bb3c24b9d4ec12500f0124288a65df232a3aa749bb0c39734b782873a2544d"},
