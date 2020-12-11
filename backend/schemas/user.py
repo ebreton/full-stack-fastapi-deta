@@ -22,18 +22,15 @@ class UserUpdate(UserBase):
     password: Optional[str] = None
 
 
-class UserInDBBase(UserBase):
-    id: Optional[int] = None
+# Schema stored in DB
+class UserInDB(UserBase):
+    key: str = None
+    hashed_password: str
 
     class Config:
         orm_mode = True
 
 
-# Additional properties to return via API
-class User(UserInDBBase):
-    pass
-
-
-# Additional properties stored in DB
-class UserInDB(UserInDBBase):
-    hashed_password: str
+# Schema passed through API, once object created in DB
+class User(UserBase):
+    key: str

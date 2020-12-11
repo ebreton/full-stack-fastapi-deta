@@ -6,6 +6,11 @@ The inventory of all branches is available on the master branche, more specifica
 
 ## Features
 
+## Testing
+
+    export PYTHONPATH=~/git-repos/full-stack-fastapi-deta/backend
+    pytest -x --pdb tests
+
 ## Technical mindset
 
 - focus on getting fastAPI deployed on a Micro and a BaseBD
@@ -14,6 +19,7 @@ The inventory of all branches is available on the master branche, more specifica
         - fastapi
         - passlib (for password encryption)
         - pydantic[email] (for email validation)
+        - jinja2 (for emails formatting)
     - keeping tests and linters to the minimum
         - flake8
         - pytest

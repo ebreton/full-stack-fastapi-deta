@@ -13,7 +13,7 @@ from .utils.utils import get_superuser_token_headers
 
 @pytest.fixture(scope="session")
 def db() -> Generator:
-    return Deta(settings.PROJECT_KEY).Base(settings.TEST_DB_NAME)
+    return Deta(settings.PROJECT_KEY).Base(settings.DB_NAME)
 
 
 @pytest.fixture(scope="module")

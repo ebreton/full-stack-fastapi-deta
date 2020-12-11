@@ -26,7 +26,6 @@ class Settings(BaseSettings):
     PROJECT_NAME: str
     PROJECT_KEY: str
     DB_NAME: str
-    TEST_DB_NAME: str
     SENTRY_DSN: Optional[HttpUrl] = None
 
     @validator("SENTRY_DSN", pre=True)
@@ -50,13 +49,14 @@ class Settings(BaseSettings):
         return v
 
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 48
-    EMAIL_TEMPLATES_DIR: str = "/app/app/email-templates/build"
+    EMAIL_TEMPLATES_DIR: str = "backend/email-templates/build"
     EMAILS_ENABLED: bool = False
 
     @validator("EMAILS_ENABLED", pre=True)
     def get_emails_enabled(cls, v: bool, values: Dict[str, Any]) -> bool:
         return bool(
-            values.get("SMTP_HOST")
+            values.get("EMAILS_ENABLED")
+            and values.get("SMTP_HOST")
             and values.get("SMTP_PORT")
             and values.get("EMAILS_FROM_EMAIL")
         )

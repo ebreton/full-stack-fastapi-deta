@@ -23,6 +23,8 @@ def test_create_user_new_email(
     user = crud.user.get_by_email(db, email=username)
     assert user
     assert user.email == created_user["email"]
+    # cleaning time ...
+    crud.user.delete(db, key=user.key)
 
 
 def test_get_existing_user(
@@ -32,25 +34,26 @@ def test_get_existing_user(
     password = random_lower_string()
     user_in = UserCreate(email=username, password=password)
     user = crud.user.create(db, obj_in=user_in)
-    user_id = user.id
+    user_key = user.key
     r = client.get(
-        f"{settings.API_V1_STR}/users/{user_id}", headers=superuser_token_headers,
+        f"{settings.API_V1_STR}/users/{user_key}", headers=superuser_token_headers,
     )
     assert 200 <= r.status_code < 300
     api_user = r.json()
     existing_user = crud.user.get_by_email(db, email=username)
     assert existing_user
     assert existing_user.email == api_user["email"]
+    # cleaning time ...
+    crud.user.delete(db, key=user.key)
 
 
 def test_create_user_existing_username(
     client: TestClient, superuser_token_headers: dict, db: Base
 ) -> None:
     username = random_email()
-    # username = email
     password = random_lower_string()
     user_in = UserCreate(email=username, password=password)
-    crud.user.create(db, obj_in=user_in)
+    user = crud.user.create(db, obj_in=user_in)
     data = {"email": username, "password": password}
     r = client.post(
         f"{settings.API_V1_STR}/users/", headers=superuser_token_headers, json=data,
@@ -58,18 +61,8 @@ def test_create_user_existing_username(
     created_user = r.json()
     assert r.status_code == 400
     assert "_id" not in created_user
-
-
-def test_create_user_by_normal_user(
-    client: TestClient, normal_user_token_headers: Dict[str, str]
-) -> None:
-    username = random_email()
-    password = random_lower_string()
-    data = {"email": username, "password": password}
-    r = client.post(
-        f"{settings.API_V1_STR}/users/", headers=normal_user_token_headers, json=data,
-    )
-    assert r.status_code == 400
+    # cleaning time ...
+    crud.user.delete(db, key=user.key)
 
 
 def test_retrieve_users(
@@ -78,12 +71,12 @@ def test_retrieve_users(
     username = random_email()
     password = random_lower_string()
     user_in = UserCreate(email=username, password=password)
-    crud.user.create(db, obj_in=user_in)
+    user = crud.user.create(db, obj_in=user_in)
 
     username2 = random_email()
     password2 = random_lower_string()
     user_in2 = UserCreate(email=username2, password=password2)
-    crud.user.create(db, obj_in=user_in2)
+    user2 = crud.user.create(db, obj_in=user_in2)
 
     r = client.get(f"{settings.API_V1_STR}/users/", headers=superuser_token_headers)
     all_users = r.json()
@@ -91,3 +84,6 @@ def test_retrieve_users(
     assert len(all_users) > 1
     for item in all_users:
         assert "email" in item
+    # cleaning time ...
+    crud.user.delete(db, key=user.key)
+    crud.user.delete(db, key=user2.key)
