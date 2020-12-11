@@ -1,2 +1,4 @@
 .vscode
 .env
+.settings.*
+!.settings.sample

@@ -1,7 +1,12 @@
+import os
 import secrets
 from typing import Any, Dict, List, Optional, Union
 
+from dotenv import load_dotenv
 from pydantic import AnyHttpUrl, BaseSettings, EmailStr, HttpUrl, validator
+
+# load .env in order to get SETTINGS_FILE available to os.getenv
+load_dotenv()
 
 
 class Settings(BaseSettings):
@@ -72,7 +77,7 @@ class Settings(BaseSettings):
 
     class Config:
         case_sensitive = True
-        env_file = '.env'
+        env_file = os.getenv("SETTINGS_FILE") or '.env'
 
 
 settings = Settings()

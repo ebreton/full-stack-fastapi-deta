@@ -6,10 +6,29 @@ The inventory of all branches is available on the master branche, more specifica
 
 ## Features
 
+## Setting up
+
+Set all the settings of your backend in a file copied from .settings.sample
+
+    cp .settings.sample .settings.test
+        PROJECT_KEY=123
+        ...
+
+    cp .settings.sample .settings.dev
+        PROJECT_KEY=123
+        EMAILS_ENABLED=True
+        ...
+
+Set your PYTHONPATH and which settings file to use in your .env file
+
+    cp .env.sample .env
+        PYTHONPATH=`pwd`/backend
+        SETTINGS_FILE=.settings.dev
+
+
 ## Testing
 
-    export PYTHONPATH=~/git-repos/full-stack-fastapi-deta/backend
-    pytest -x --pdb tests
+    SETTINGS_FILE=.settings.test pytest -x --pdb tests
 
 ## Linting
 
@@ -25,14 +44,12 @@ The inventory of all branches is available on the master branche, more specifica
         - pydantic[email] (for email validation)
         - jinja2 (for emails formatting)
     - keeping tests and linters to the minimum
-        - flake8
-        - pytest
 
 ## Tree architecture
 
+- provide the scafeholding in `core`
+    -> keep as DRY as possible
 - isolate the user features in one package `users`
     -> will facilitate the implementation of multi micros
 - expose the `schemas` outside of the package
     -> will act as the contract between micros
-- provide the scafeholding in `core`
-    -> keep as DRY as possible
