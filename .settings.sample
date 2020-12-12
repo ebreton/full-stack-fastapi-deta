@@ -2,7 +2,7 @@
 PROJECT_NAME=my-project
 PROJECT_KEY=from https://web.deta.sh
 SERVER_HOST=https://my-micro.deta.sh
-API_V1_STR="/api/v1"
+API_V1_STR=/api/v1
 
 # Security
 SECRET_KEY=e.g. from secrets.token_urlsafe(32)
@@ -27,7 +27,7 @@ SMTP_USER=my-account
 SMTP_PASSWORD=password
 
 EMAIL_RESET_TOKEN_EXPIRE_HOURS=48
-EMAIL_TEMPLATES_DIR="backend/email-templates/build"
+EMAIL_TEMPLATES_DIR=backend/email-templates/build
 
 # DB
 DB_NAME=my-db
@@ -36,4 +36,4 @@ DB_NAME=my-db
 SENTRY_DSN=from https://sentry.io/
 
 # Testing
-EMAIL_TEST_USER="test@example.com"
+EMAIL_TEST_USER=test@example.com

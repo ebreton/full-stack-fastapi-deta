@@ -1,5 +1,6 @@
 import os
 import secrets
+import toml
 from typing import Any, Dict, List, Optional, Union
 
 from dotenv import load_dotenv
@@ -8,10 +9,15 @@ from pydantic import AnyHttpUrl, BaseSettings, EmailStr, HttpUrl, validator
 # load .env in order to get SETTINGS_FILE available to os.getenv
 load_dotenv()
 
+# load project toml, especially for the version
+poetry_toml = toml.load('pyproject.toml')
+
 
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     SECRET_KEY: str = secrets.token_urlsafe(32)
+    VERSION: str = poetry_toml['tool']['poetry']['version']
+
     # 60 minutes * 24 hours * 8 days = 8 days
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
     SERVER_HOST: AnyHttpUrl
@@ -20,7 +26,7 @@ class Settings(BaseSettings):
     # "http://localhost:8080", "http://local.dockertoolbox.tiangolo.com"]'
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
 
-    @validator("BACKEND_CORS_ORIGINS", pre=True)
+    @validator("BACKEND_CORS_ORIGINS", pre=True, allow_reuse=True)
     def assemble_cors_origins(
         cls, v: Union[str, List[str]]  # noqa: F841
     ) -> Union[List[str], str]:
@@ -35,7 +41,7 @@ class Settings(BaseSettings):
     DB_NAME: str
     SENTRY_DSN: Optional[HttpUrl] = None
 
-    @validator("SENTRY_DSN", pre=True)
+    @validator("SENTRY_DSN", pre=True, allow_reuse=True)
     def sentry_dsn_can_be_blank(cls, v: str) -> Optional[str]:  # noqa: F841
         if len(v) == 0:
             return None
@@ -49,7 +55,7 @@ class Settings(BaseSettings):
     EMAILS_FROM_EMAIL: Optional[EmailStr] = None
     EMAILS_FROM_NAME: Optional[str] = None
 
-    @validator("EMAILS_FROM_NAME")
+    @validator("EMAILS_FROM_NAME", allow_reuse=True)
     def get_project_name(
         cls, v: Optional[str], values: Dict[str, Any]  # noqa: F841
     ) -> str:
@@ -61,7 +67,7 @@ class Settings(BaseSettings):
     EMAIL_TEMPLATES_DIR: str = "backend/email-templates/build"
     EMAILS_ENABLED: bool = False
 
-    @validator("EMAILS_ENABLED", pre=True)
+    @validator("EMAILS_ENABLED", pre=True, allow_reuse=True)
     def get_emails_enabled(cls, v: bool, values: Dict[str, Any]) -> bool:  # noqa: F841
         return bool(
             values.get("EMAILS_ENABLED")
