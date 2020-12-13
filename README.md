@@ -6,7 +6,8 @@
 </h1>
 
 <h4 align="center">
- None of this would have been possible without the fantastic work put into [Tiangolo](https://github.com/tiangolo)'s [FastAPI](https://github.com/tiangolo/fastapi) :rocket:. And from the [Deta team](https://github.com/deta) :fireworks:. Thank you very much!
+None of this would have been possible without the fantastic work put into <a href="https://github.com/tiangolo">Tiangolo</a>'s <a href="https://github.com/tiangolo/fastapi">FastAPI</a> :rocket:. And from the <a href="https://github.com/deta">Deta team</a> :fireworks:.
+  <p>Thank you so much!</p>
 </h4>
 
 <p align="center">
