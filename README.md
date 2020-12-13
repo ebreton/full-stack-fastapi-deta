@@ -1,7 +1,26 @@
-# Full Stack FastAPI and Deta
+<h1 align="center" style="margin:1em">
+  <img src="./img/logos.png"
+       alt="Full-stack-FastAPI-Deta"
+       width="200">
+    <br/> Full-stack FastAPI on Deta
+</h1>
 
+<h4 align="center">
+None of this would have been possible without the fantastic work put into Tiangolo's <a href="https://github.com/tiangolo/fastapi">FastAPI</a> :rocket:. 
 
-None of this would have been possible without the fantastic work put into [Tiangolo](https://github.com/tiangolo)'s [FastAPI](https://github.com/tiangolo/fastapi). And from the [Deta team](https://github.com/deta). Thank you very much !
+And from the <a href="https://github.com/deta">Deta team</a> :fireworks:.
+  <p>Thanks!</p>
+</h4>
+
+<p align="center">
+    <img src="https://img.shields.io/badge/feature:users-01-green.svg"
+         alt="Users" />
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg"
+         alt="License MIT" />
+</p>
+
+<br/>
+
 
 ## Context
 
