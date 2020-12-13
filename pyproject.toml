@@ -13,6 +13,7 @@ pydantic = {extras = ["email", "dotenv"], version = "^1.7.3"}
 Jinja2 = "^2.11.2"
 deta = "^0.7"
 toml = "^0.10.2"
+uvicorn = "^0.13.1"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.770"

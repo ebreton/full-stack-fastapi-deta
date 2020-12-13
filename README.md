@@ -154,6 +154,17 @@ Initialize deta
 
 ## Development
 
+### Runnning Locally
+
+Check the values for SERVER_HOST (e.g. `localhost`) and SERVER_PORT (e.g. `3000`)
+
+    $ python backend main.py
+    INFO:     Uvicorn running on http://localhost:3000 (Press CTRL+C to quit)
+    INFO:     Started reloader process [87348] using statreload
+    INFO:     Started server process [87350]
+    INFO:     Waiting for application startup.
+
+
 ### Linting
 
     $ bash lint.sh backend tests

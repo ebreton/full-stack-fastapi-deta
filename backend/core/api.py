@@ -18,7 +18,7 @@ def version():
         "python": sys.version,
         "fastapi": fastapi.__version__,
         "pydantic": pydantic.version.VERSION,
-        "api": f"{settings.SERVER_HOST}{settings.API_V1_STR}/users",
-        "swagger": f"{settings.SERVER_HOST}/docs",
-        "redoc": f"{settings.SERVER_HOST}/redoc",
+        "api": f"{settings.SERVER_URL}{settings.API_V1_STR}/users",
+        "swagger": f"{settings.SERVER_URL}/docs",
+        "redoc": f"{settings.SERVER_URL}/redoc",
     }

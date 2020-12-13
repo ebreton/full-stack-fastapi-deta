@@ -1,13 +1,15 @@
 # High-level project configuration
 PROJECT_NAME=my-project
 PROJECT_KEY=from https://web.deta.sh
-SERVER_HOST=https://my-micro.deta.sh
+SERVER_NAME=localhost
+SERVER_PORT=3000
+SERVER_URL=http://localhost:3000
 API_V1_STR=/api/v1
 
 # Security
 SECRET_KEY=e.g. from secrets.token_urlsafe(32)
 ACCESS_TOKEN_EXPIRE_MINUTES=60
-BACKEND_CORS_ORIGINS=["http://localhost"]
+BACKEND_CORS_ORIGINS=["http://localhost:8080"]
 
 # User management
 FIRST_SUPERUSER=me

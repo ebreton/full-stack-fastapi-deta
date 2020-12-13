@@ -20,7 +20,9 @@ class Settings(BaseSettings):
 
     # 60 minutes * 24 hours * 8 days = 8 days
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
-    SERVER_HOST: AnyHttpUrl
+    SERVER_HOST: str = "localhost"
+    SERVER_PORT: int = 3000
+    SERVER_URL: AnyHttpUrl = f"http://{SERVER_HOST}:{SERVER_PORT}"
     # BACKEND_CORS_ORIGINS is a JSON-formatted list of origins
     # e.g: '["http://localhost", "http://localhost:4200", "http://localhost:3000", \
     # "http://localhost:8080", "http://local.dockertoolbox.tiangolo.com"]'
