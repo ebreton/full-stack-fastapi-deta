@@ -6,15 +6,15 @@
 </h1>
 
 <h4 align="center">
-None of this would have been possible without the fantastic work put into <a href="https://github.com/tiangolo">Tiangolo</a>'s <a href="https://github.com/tiangolo/fastapi">FastAPI</a> :rocket:. And from the <a href="https://github.com/deta">Deta team</a> :fireworks:.
-  <p>Thank you so much!</p>
+None of this would have been possible without the fantastic work put into <a href="https://github.com/tiangolo">Tiangolo</a>'s <a href="https://github.com/tiangolo/fastapi">FastAPI</a> :rocket:.
+
+And of course thanks to the <a href="https://github.com/deta">Deta team</a> :fireworks:.
+  <p>Thanks!</p>
 </h4>
 
 <p align="center">
-  <a href="https://github.com/ebreton/release-maker/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg"
          alt="License" />
-  </a>
 </p>
 
 <br/>
@@ -41,7 +41,7 @@ Go through the descriptions of the branches in the next section, checkout the on
 
 - no source code. Just the content you are currently reading.
 
-### [01-users](https://github.com/ebreton/full-stack-fastapi-deta/tree/01-users)
+### [![01-users](https://img.shields.io/badge/feature:users-01-green.svg)](https://github.com/ebreton/full-stack-fastapi-deta/tree/01-users)
 
 - Simple CRUD api on users.
 - Foundations for code quality, i.e. tests and linting
