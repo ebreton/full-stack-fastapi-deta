@@ -1,15 +1,36 @@
-# Full Stack FastAPI and Deta
+<h1 align="center" style="margin:1em">
+  <img src="./logos.png"
+       alt="Full-stack-FastAPI-Deta"
+       width="200">
+    <br/> Full-stack FastAPI on Deta
+</h1>
 
-None of this would have been possible without the fantastic work put into [Tiangolo](https://github.com/tiangolo)'s [FastAPI](https://github.com/tiangolo/fastapi). And from the [Deta team](https://github.com/deta). Thank you very much !
+<h4 align="center">
+ None of this would have been possible without the fantastic work put into [Tiangolo](https://github.com/tiangolo)'s [FastAPI](https://github.com/tiangolo/fastapi) :rocket:. And from the [Deta team](https://github.com/deta) :fireworks:. Thank you very much!
+</h4>
 
-## Context
+<p align="center">
+  <a href="https://github.com/ebreton/release-maker/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg"
+         alt="License" />
+  </a>
+</p>
 
-This repo is unconventional: I will create branches per use cases. One branch per step of my musing if you will.
+<br/>
+
+
+## Vision
+
+I see this repo as a tutorial, where branches will focus on specific use cases.
 
 I will try to get to the level of [tiangolo's Full Stack FastAPI and Postgresql](https://github.com/tiangolo/full-stack-fastapi-postgresql.git), replacing PostgreSQL and Docker with Deta Base and Micros.
 
+But there is a long way to reach this level. And in the meantime, please consider this repo as a sandbox more than a production ready solution. In other words: **branches are not designed for prod, but for learning :)**
+
 
 ## How to use it
+
+You will need to create a [Deta](https://www.deta.sh) account and grab your project key. Follow the official [documentation](https://docs.deta.sh/docs/home) to install the Deta CLI and understand the basics.
 
 Go through the descriptions of the branches in the next section, checkout the one that matches your need, and go through its README file
 
@@ -17,19 +38,21 @@ Go through the descriptions of the branches in the next section, checkout the on
 
 ### master (here)
 
-- no source code. Just the content you are currently reading, that is the inventory of the branches
+- no source code. Just the content you are currently reading.
 
 ### [01-users](https://github.com/ebreton/full-stack-fastapi-deta/tree/01-users)
 
-- Simple CRUD api on one type of objects
+- Simple CRUD api on users.
+- Foundations for code quality, i.e. tests and linting
 
-### 02-microservices (next)
+### 02-frontend (WIP)
+
+- adding the other half of the repo
+
+### 03-microservices (next)
 
 - Adding items in another DB and another Micro
 
-### 03-authentication (probably following)
-
-- Leveraging OAuth between the 2 microservices
 
 ## License
 
